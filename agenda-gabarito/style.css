@@ -1,0 +1,324 @@
+/* ===========================================================
+   Agenda de entregas — Etapa 2: o CSS
+   =========================================================== */
+
+/* Passo 1 — A base */
+
+:root {
+    --cor-fundo: #f4f1ec;
+    --cor-cartao: #ffffff;
+    --cor-texto: #2b2d42;
+    --cor-suave: #6c6f86;
+    --cor-principal: #253858;
+    --cor-destaque: #ff7a59;
+    --cor-destaque-escura: #e8603e;
+    --cor-borda: #e3ded5;
+
+    --cor-prova: #e03131;
+    --cor-trabalho: #1971c2;
+    --cor-apresentacao: #9c36b5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: var(--cor-fundo);
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--cor-texto);
+}
+
+
+/* Passo 2 — O topo e o rodapé */
+
+.topo {
+    padding: 28px 20px;
+    background-color: var(--cor-principal);
+    color: #ffffff;
+    text-align: center;
+}
+
+.topo h1 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.topo p {
+    margin: 4px 0 0 0;
+    color: #c7d2e6;
+}
+
+.rodape {
+    padding: 24px 20px;
+    color: var(--cor-suave);
+    font-size: 14px;
+    text-align: center;
+}
+
+.rodape p {
+    margin: 0;
+}
+
+
+/* Passo 3 — O layout no celular */
+
+.painel {
+    display: grid;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    grid-template-areas:
+        "resumo"
+        "nova"
+        "entregas";
+}
+
+.resumo {
+    grid-area: resumo;
+}
+
+.nova-entrega {
+    grid-area: nova;
+}
+
+.entregas {
+    grid-area: entregas;
+}
+
+
+/* Passo 4 — Os cartões */
+
+.cartao {
+    min-width: 0;
+    padding: 20px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 12px;
+    background-color: var(--cor-cartao);
+}
+
+h2,
+legend {
+    margin: 0 0 12px 0;
+    padding: 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-principal);
+}
+
+
+/* Passo 5 — O layout no computador */
+
+@media (min-width: 800px) {
+
+    .painel {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas:
+            "resumo entregas"
+            "nova entregas";
+        grid-template-rows: auto 1fr;
+        align-items: start;
+    }
+
+}
+
+
+/* Passo 6 — O resumo */
+
+.indicadores {
+    display: flex;
+    gap: 12px;
+}
+
+.indicador {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    background-color: var(--cor-fundo);
+}
+
+.rotulo {
+    display: block;
+    font-size: 13px;
+    color: var(--cor-suave);
+}
+
+.indicador strong {
+    font-size: 20px;
+    color: var(--cor-principal);
+}
+
+
+/* Passo 7 — O formulário */
+
+fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.formulario p,
+.filtro {
+    margin: 0 0 14px 0;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    background-color: var(--cor-cartao);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 16px;
+}
+
+.botao-adicionar {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--cor-destaque);
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.botao-adicionar:hover {
+    background-color: var(--cor-destaque-escura);
+}
+
+
+/* Passo 8 — As entregas */
+
+.lista {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.entrega {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--cor-borda);
+    border-left: 6px solid var(--cor-suave);
+    border-radius: 8px;
+}
+
+.data {
+    min-width: 52px;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--cor-principal);
+}
+
+.info {
+    flex: 1;
+    min-width: 0;
+}
+
+.materia {
+    display: block;
+}
+
+.etiqueta {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background-color: var(--cor-suave);
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.acoes {
+    display: flex;
+    gap: 8px;
+}
+
+.acoes button {
+    padding: 6px 12px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    background-color: var(--cor-cartao);
+    color: var(--cor-texto);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+/* Passo 9 — As cores dos tipos */
+
+.entrega[data-tipo="prova"] {
+    border-left-color: var(--cor-prova);
+}
+
+.entrega[data-tipo="trabalho"] {
+    border-left-color: var(--cor-trabalho);
+}
+
+.entrega[data-tipo="apresentacao"] {
+    border-left-color: var(--cor-apresentacao);
+}
+
+[data-tipo="prova"] .etiqueta {
+    background-color: var(--cor-prova);
+}
+
+[data-tipo="trabalho"] .etiqueta {
+    background-color: var(--cor-trabalho);
+}
+
+[data-tipo="apresentacao"] .etiqueta {
+    background-color: var(--cor-apresentacao);
+}
+
+
+/* Passo 10 — A entrega feita */
+
+.entrega.feita {
+    opacity: 0.5;
+}
+
+.entrega.feita .materia {
+    text-decoration: line-through;
+}
+
+
+/* Passo 11 — O acabamento */
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+    outline: 3px solid var(--cor-principal);
+    outline-offset: 2px;
+}
+
+.acoes button:hover {
+    background-color: var(--cor-fundo);
+}
+
+.acoes .botao-apagar:hover {
+    border-color: var(--cor-prova);
+    color: var(--cor-prova);
+}
